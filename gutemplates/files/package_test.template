@@ -1,0 +1,11 @@
+package {{.PackageName}}
+
+import (
+	"testing"
+)
+
+func {{.TestFuncName}}(t *testing.T) {
+
+	{{.FuncName}}()
+
+}
