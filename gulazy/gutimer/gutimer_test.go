@@ -16,6 +16,14 @@ func TestGetDDay(t *testing.T) {
 	fmt.Println(GetDDay())
 }
 
+func TestGetHourMinSec(t *testing.T) {
+	fmt.Println(GetHourMinSec(true))
+	fmt.Println(GetHourMinSec(false))
+}
+
+func TestGetHourMinSecAsInt(t *testing.T) {
+	fmt.Println(GetHourMinSecAsInt())
+}
 func TestGetDate(t *testing.T) {
 	fmt.Println(GetTimeLongVersion())
 }

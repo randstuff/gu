@@ -1,9 +1,10 @@
-package guhmac
+package hmac
 
 import (
 	"crypto/hmac"
 	"crypto/sha256"
 	"encoding/hex"
+	//	"fmt"
 )
 
 func GernerateSHA2_HMAC(tSecret string, tData string) string {

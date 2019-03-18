@@ -7,7 +7,7 @@ import (
 
 func TestEncode(t *testing.T) {
 
-	n := Cmd{}
+	n := MyStructA{}
 	n.SetDefaultValues()
 
 	if out, err := n.StructToJSON(); err == nil {
@@ -17,16 +17,9 @@ func TestEncode(t *testing.T) {
 
 func TestDecode(t *testing.T) {
 
-	tjson := `"{\"Action\":\"hello\",
-			\"Status\":\"hello\",
-			\"Priority\":-42,
-			\"AAAA\":\"hello\",
-			\"BBBB\":\"hello\",
-			\"CCCC\":\"hello\",
-			\"DDDD\":\"hello\",
-			\"Options\":true}"`
+	tjson := "{\"Action\":\"hello\",\"Status\":\"hello\",\"Priority\":-42,\"StartDate\":\"hello\",\"URL\":\"hello\",\"IP\":\"hello\",\"Domain\":\"hello\",\"FQDN\":\"hello\",\"Options\":true}"
 
-	c := Cmd{}
+	c := MyStructA{}
 	c.SetDefaultValues()
 	c.BinaryToStruct([]byte(tjson))
 	c.Print()
@@ -43,27 +36,9 @@ func TestEncodeArr(t *testing.T) {
 
 func TestDecodeArr(t *testing.T) {
 
-	tjson := `"{\"Items\":[{
-						\"Action\":\"N/A\",
-						\"Status\":\"N/A\",
-						\"Priority\":-1,
-						\"AAAA\":\"N/A\",
-						\"BBBB\":\"N/A\",
-						\"CCCC\":\"N/A\",
-						\"DDDD\":\"N/A\",
-						\"Options\":null},
-						{
-						\"Action\":\"N/A\",
-						\"Status\":\"N/A\",
-						\"Priority\":-1,
-						\"AAAA\":\"N/A\",
-						\"BBBB\":\"N/A\",
-						\"CCCC\":\"N/A\",
-						\"DDDD\":\"N/A\",
-						\"Options\":null}
-						]}"`
+	tjson := "{\"Items\":[{\"Action\":\"N/A\",\"Status\":\"N/A\",\"Priority\":-1,\"StartDate\":\"N/A\",\"URL\":\"N/A\",\"IP\":\"N/A\",\"Domain\":\"N/A\",\"FQDN\":\"N/A\",\"Options\":null},{\"Action\":\"N/A\",\"Status\":\"N/A\",\"Priority\":-1,\"StartDate\":\"N/A\",\"URL\":\"N/A\",\"IP\":\"N/A\",\"Domain\":\"N/A\",\"FQDN\":\"N/A\",\"Options\":null}]}"
 
-	arr := ArrCmd{}
+	arr := ArrMyStructA{}
 	arr.BinaryToStruct([]byte(tjson))
 	arr.Print()
 }
@@ -77,19 +52,11 @@ func TestGenericStructToJson(t *testing.T) {
 		fmt.Println(" out : ", string(out))
 	}
 
-	c := Cmd{}
+	c := MyStructA{}
 	c.SetDefaultValues()
 
 	if out, err := GenericStructToJSON(c); err == nil {
 		fmt.Println(" out : ", string(out))
 	}
-
-}
-
-func TestGenericGenericJsonToStruct(t *testing.T) {
-
-	tjson := "{\"Action\":\"hello\",\"Status\":\"hello\",\"Priority\":-42,\"AAAA\":\"hello\",\"BBBB\":\"hello\",\"CCCC\":\"hello\",\"DDDD\":\"hello\",\"Options\":true}"
-	out := ProcessJSON(tjson)
-	fmt.Println(out)
 
 }

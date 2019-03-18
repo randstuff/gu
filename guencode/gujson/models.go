@@ -4,64 +4,62 @@ import (
 	"fmt"
 )
 
-type Cmd struct {
-	Action   string
-	Status   string
-	Priority int
-	//	StartDate string
-	// // // //
+type MyStructA struct {
 	AAAA string
 	BBBB string
-	CCCC string
+	CCCC int
 	DDDD string
+	EEEE string
+	FFFF string
+	GGGG string
+	HHHH string
 	// // // //
-	Options []byte //
+	ZZZZ []byte //
 }
 
-func (c *Cmd) Print() {
+func (c *MyStructA) Print() {
 
-	fmt.Println(" :: Action     : ", c.Action)
-	fmt.Println(" :: Status     : ", c.Status)
-	fmt.Println(" :: Priority   : ", c.Priority)
-	//	fmt.Println(" :: Start date : ", c.StartDate)
+	fmt.Println(" :: AAAA : ", c.AAAA)
+	fmt.Println(" :: BBBB : ", c.BBBB)
+	fmt.Println(" :: CCCC : ", c.CCCC)
+	fmt.Println(" :: DDDD : ", c.DDDD)
 
-	fmt.Println(" :: URL      : ", c.AAAA)
-	fmt.Println(" :: IP       :", c.BBBB)
-	fmt.Println(" :: Domain   : ", c.CCCC)
-	fmt.Println(" :: FQDN     : ", c.DDDD)
-	fmt.Println(" :: Options  : ", string(c.Options))
+	fmt.Println(" :: EEEE : ", c.EEEE)
+	fmt.Println(" :: FFFF :", c.FFFF)
+	fmt.Println(" :: GGGG : ", c.GGGG)
+	fmt.Println(" :: HHHH : ", c.HHHH)
+	fmt.Println(" :: ZZZZ : ", string(c.ZZZZ))
 
 }
 
-func (s *Cmd) SetDefaultValues() {
+func (s *MyStructA) SetDefaultValues() {
 
-	s.Action = "N/A"
-	s.Status = "N/A"
-	s.Priority = -1
-	//	s.StartDate = "N/A"
-	// // // //
 	s.AAAA = "N/A"
 	s.BBBB = "N/A"
-	s.CCCC = "N/A"
+	s.CCCC = -1
 	s.DDDD = "N/A"
+	// // // //
+	s.EEEE = "N/A"
+	s.FFFF = "N/A"
+	s.GGGG = "N/A"
+	s.HHHH = "N/A"
 
 }
 
 // // // //// // // //// // // //// // // //// // // //// // // //// // // //// // //
 
-type ArrCmd struct {
-	Items []Cmd
+type ArrMyStructA struct {
+	Items []MyStructA
 }
 
-func (c *ArrCmd) AddItem(item Cmd) []Cmd {
+func (c *ArrMyStructA) AddItem(item MyStructA) []MyStructA {
 	c.Items = append(c.Items, item)
 	return c.Items
 }
 
-func (t *ArrCmd) Print() {
+func (t *ArrMyStructA) Print() {
 
 	for _, i := range t.Items {
 		i.Print()
-
 	}
 }

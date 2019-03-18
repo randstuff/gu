@@ -1,5 +1,4 @@
 package_name: Flipfront
 test_func_name: TestFuncName
 func_name: FuncName
-base_path: [here the targeted full path directory  ] 
-
+base_path: /tmp/src/gutemplates

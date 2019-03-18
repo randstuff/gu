@@ -5,6 +5,12 @@ import (
 	"testing"
 )
 
+//func TestReadYamlFile(t *testing.T) {
+
+//	var c Config
+//	ReadYamlFile("./test.yaml", c)
+//}
+
 func TestNewReadYamlFile(t *testing.T) {
 
 	var c Config

@@ -10,16 +10,14 @@ import (
 
 func GenericStructToJSON(t interface{}) ([]byte, error) {
 
-	fmt.Println(" :: GenericStructToJSON ")
-
 	var err error
 	var tmp []byte
 
 	switch t.(type) {
 
-	case Cmd:
+	case MyStructA:
 		tmp, err = json.Marshal(t)
-	case ArrCmd:
+	case ArrMyStructA:
 		tmp, err = json.Marshal(t)
 		//	case MyStruct1:
 		//		tmp, err = json.Marshal(t)
@@ -32,20 +30,39 @@ func GenericStructToJSON(t interface{}) ([]byte, error) {
 	return tmp, err
 }
 
-// // // // // // // // // // // // // // // // // // // // // // // // // //
+func GenericBinaryToStruct(t []byte, tDest interface{}) (interface{}, error) {
 
-func (t *Cmd) StructToJSON() ([]byte, error) {
+	r := bytes.NewReader(t)
+	b, err := ioutil.ReadAll(r)
+
+	if err == nil {
+
+		switch tDest.(type) {
+		case MyStructA:
+			err = json.Unmarshal(b, &tDest)
+		case ArrMyStructA:
+			err = json.Unmarshal(b, &tDest)
+
+		}
+	}
+	return tDest, err
+}
+
+// // // // // // // // // // // // MyStructA // // // // // // // // // // // //
+
+func (t *MyStructA) StructToJSON() ([]byte, error) {
 	var tmp []byte
+	tmp, err := json.Marshal(t)
 
-	tmp, err := GenericStructToJSON(t)
+	//	tmp, err := GenericStructToJSON(t)
 
 	if err != nil {
-		fmt.Println("ERR :: CmdDetails.StructToJSON ::", err)
+		fmt.Println("ERR :: MyStructA.StructToJSON ::", err)
 	}
 	return tmp, err
 }
 
-func (data *Cmd) BinaryToStruct(t []byte) error {
+func (data *MyStructA) BinaryToStruct(t []byte) error {
 
 	r := bytes.NewReader(t)
 	b, err := ioutil.ReadAll(r)
@@ -53,27 +70,25 @@ func (data *Cmd) BinaryToStruct(t []byte) error {
 	if err == nil {
 		errJson := json.Unmarshal(b, &data)
 		if errJson != nil {
-			//			Logger.Warning.Println("ERR :: CmdDetails.BinaryToStruct :: ", errJson)
-			fmt.Println("ERR :: CmdDetails.BinaryToStruct :: ", errJson)
+			fmt.Println("ERR :: MyStructA.BinaryToStruct :: ", errJson)
 		}
 	}
 	return err
 }
 
-// // // // // // // // // // // // // // // // // // // // // // // // // //
+// // // // // // // // // // // // // // // // // // // // // // // // // // //
 
-func (t *ArrCmd) StructToJSON() ([]byte, error) {
+func (t *ArrMyStructA) StructToJSON() ([]byte, error) {
 	var tmp []byte
 	tmp, err := json.Marshal(t)
 
 	if err != nil {
-		//		Logger.Warning.Println("ERR :: ArrCmdDetails.StructToJSON ::", err)
-		fmt.Println("ERR :: ArrCmdDetails.StructToJSON ::", err)
+		fmt.Println("ERR :: ArrMyStructA.StructToJSON ::", err)
 	}
 	return tmp, err
 }
 
-func (data *ArrCmd) BinaryToStruct(t []byte) error {
+func (data *ArrMyStructA) BinaryToStruct(t []byte) error {
 
 	r := bytes.NewReader(t)
 	b, err := ioutil.ReadAll(r)
@@ -81,8 +96,7 @@ func (data *ArrCmd) BinaryToStruct(t []byte) error {
 	if err == nil {
 		errJson := json.Unmarshal(b, &data)
 		if errJson != nil {
-			//			Logger.Warning.Println("ERR :: ArrCmdDetails.BinaryToStruct :: ", errJson)
-			fmt.Println("ERR :: ArrCmdDetails.BinaryToStruct :: ", errJson)
+			fmt.Println("ERR :: ArrMyStructA.BinaryToStruct :: ", errJson)
 		}
 	}
 	return err

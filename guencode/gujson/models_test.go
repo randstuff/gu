@@ -6,41 +6,41 @@ import (
 
 func TestSetDefaultValues(t *testing.T) {
 
-	n := Cmd{}
+	n := MyStructA{}
 	n.SetDefaultValues()
 	n.Print()
 }
 
 func TestPrint(t *testing.T) {
 
-	n := Cmd{}
+	n := MyStructA{}
 	n.SetDefaultValues()
 	n.Print()
 }
 
 func TestAddItem(t *testing.T) {
 
-	c := Cmd{}
+	c := MyStructA{}
 	c.SetDefaultValues()
 
-	d := Cmd{}
+	d := MyStructA{}
 	d.SetDefaultValues()
 
-	arr := ArrCmd{}
+	arr := ArrMyStructA{}
 	arr.AddItem(c)
 	arr.AddItem(d)
 	arr.Print()
 }
 
-func GetTestArray() ArrCmd {
+func GetTestArray() ArrMyStructA {
 
-	c := Cmd{}
+	c := MyStructA{}
 	c.SetDefaultValues()
 
-	d := Cmd{}
+	d := MyStructA{}
 	d.SetDefaultValues()
 
-	arr := ArrCmd{}
+	arr := ArrMyStructA{}
 	arr.AddItem(c)
 	arr.AddItem(d)
 

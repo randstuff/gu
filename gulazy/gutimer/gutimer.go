@@ -2,6 +2,7 @@ package gutime
 
 import (
 	"strconv"
+	"strings"
 	"time"
 )
 
@@ -24,6 +25,25 @@ func GetDDay() string {
 	t := time.Now()
 	//      out := (t.Format("20180101"))
 	out := (t.Format("20060102"))
+	return out
+}
+
+func GetHourMinSec(cleaned bool) string {
+
+	t := time.Now()
+	out := (t.Format("15:04:05"))
+
+	if cleaned == true {
+		out = strings.Replace(out, ":", "", -1)
+	}
+
+	return out
+}
+
+func GetHourMinSecAsInt() int {
+
+	tmp := GetHourMinSec(true)
+	out, _ := strconv.Atoi(tmp)
 	return out
 }
 

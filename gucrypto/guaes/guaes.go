@@ -5,10 +5,11 @@ import (
 	"crypto/cipher"
 	"crypto/rand"
 	"errors"
+
+	"guencode/guzip"
 	"io"
 	"io/ioutil"
 
-	"guencode/guzip"
 	"gulogger"
 )
 

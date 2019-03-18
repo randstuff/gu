@@ -18,7 +18,7 @@ type Config struct {
 	// package_name: Flipfront
 	// test_func_name: TestFuncName
 	// func_name: FuncName
-	// base_path: [ full path output dir ] 
+	// base_path: /tmp/go.utils/src/
 }
 
 func DefaultConfig() Config {
